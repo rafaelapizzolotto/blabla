@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conheça Apolo, o Pitbull!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; /* Add some padding for smaller screens */
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row; /* Desktop layout: image on left, text on right */
+                text-align: left;
+            }
+            .content-area {
+                padding-left: 30px;
+                padding-right: 0;
+            }
+        }
+        .apolo-image {
+            width: 100%;
+            max-width: 300px; /* Limit image width */
+            height: auto;
+            border-radius: 15px; /* Slightly smaller border-radius for the image */
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        @media (min-width: 768px) {
+            .apolo-image {
+                margin-bottom: 0;
+                margin-right: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="apoloImage" src="https://placehold.co/300x350/a7d9b9/2c5d4b?text=APOLO"
+             onerror="this.onerror=null; this.src='https://placehold.co/300x350/a7d9b9/2c5d4b?text=Imagem+Apolo';"
+             alt="Imagem de Apolo, o Pitbull" class="apolo-image shadow-md">
+
+        <div class="content-area flex flex-col items-center md:items-start">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4 rounded-md p-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg">
+                🐾 Conheça Apolo! 🐾
+            </h1>
+            <p class="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
+                Este é Apolo, um pitbull incrível, cheio de energia e amor! Ele adora brincar, correr e, claro, receber muito carinho.
+            </p>
+
+            <button id="factButton"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 mb-6">
+                Clique para saber mais sobre Apolo!
+            </button>
+
+            <div id="apoloFacts" class="hidden text-md text-gray-600 space-y-3 p-4 bg-blue-50 rounded-lg border border-blue-200 shadow-inner">
+                <p><strong>Nome:</strong> Apolo</p>
+                <p><strong>Raça:</strong> Pitbull</p>
+                <p><strong>Idade:</strong> 3 anos (Exemplo)</p>
+                <p><strong>Hobbies favoritos:</strong> Caçar bolinhas, dormir no sofá e receber massagens na barriga.</p>
+                <p><strong>Personalidade:</strong> Leal, carinhoso, brincalhão e muito protetor com sua família.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Array de fatos para tornar mais dinâmico (opcional, mas bom para expansão futura)
+        const facts = [
+            "Apolo adora caçar bolinhas e consegue pegá-las no ar!",
+            "Ele é um mestre em derrubar brinquedos e depois pedir para brincar de novo.",
+            "Apolo tem um olhar expressivo que derrete qualquer coração.",
+            "Seu passatempo favorito é tirar cochilos longos e sonhar com biscoitos.",
+            "Apolo é muito inteligente e aprendeu vários truques!",
+            "Ele adora passear no parque e fazer novos amigos peludos.",
+            "Sua cauda balança tanto que parece um helicóptero quando ele está feliz!"
+        ];
+        let currentFactIndex = 0;
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const apoloFactsDiv = document.getElementById('apoloFacts');
+            const factButton = this;
+
+            // Toggle visibility of facts div
+            if (apoloFactsDiv.classList.contains('hidden')) {
+                apoloFactsDiv.classList.remove('hidden');
+                factButton.textContent = 'Esconder curiosidades';
+            } else {
+                apoloFactsDiv.classList.add('hidden');
+                factButton.textContent = 'Clique para saber mais sobre Apolo!';
+            }
+
+            // Optional: Cycle through facts if you decide to only show one at a time dynamically
+            // For now, it shows all at once after first click, as per the HTML structure.
+            // If you want to show one fact and change it on each click:
+            /*
+            const apoloFactsParagraphs = document.querySelectorAll('#apoloFacts p');
+            if (apoloFactsParagraphs.length > 0) {
+                apoloFactsParagraphs[0].innerHTML = `<strong>Curiosidade:</strong> ${facts[currentFactIndex]}`;
+                currentFactIndex = (currentFactIndex + 1) % facts.length;
+            } else {
+                 // Initial load if showing only one fact
+                apoloFactsDiv.innerHTML = `<p><strong>Curiosidade:</strong> ${facts[currentFactIndex]}</p>`;
+                currentFactIndex = (currentFactIndex + 1) % facts.length;
+                apoloFactsDiv.classList.remove('hidden');
+            }
+            */
+        });
+    </script>
+</body>
+</html>
